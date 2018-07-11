@@ -241,7 +241,7 @@
 					?>
 					<h4>SIMPLE DDOS ATTACK</h4>
 					<form method="post" onsubmit="<?php Scommand_json_ddos() ?>" name="cbots_ddos">
-						Target <input type="text" name="cb_ddos" placeholder="Ex: 192.168.0.10:80" required> Packages <input type="number" name="cb_ddos_packages" required> <input type="submit" value="Attack" name="sub_ddosattack" >
+						Target <input type="text" name="cb_ddos" placeholder="Ex: 192.168.0.10:80" required><br> Packages <input type="number" name="cb_ddos_packages" required> <input type="submit" value="Attack" name="sub_ddosattack" >
 					</form>
 					<br>
 					<h4>ADVANCED DDOS ATTACK</h4>
