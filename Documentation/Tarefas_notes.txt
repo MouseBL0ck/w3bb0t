@@ -1,0 +1,24 @@
+O que ainda falta:
+	web:
+		//check box nos itens(bots) para ter um ataque mais personalizado Ex: Quero que somente dos bots iram atacar./complicado demais pra fazer agr tera' que refazer todo o esquema de send
+		usar so um botao de ataque.// complicado agr
+		melhorar o design(css).
+		Criar form para Comand Control.
+		Criar page de info/credits(onde na info vai estar explicando tudo e tambem os comandos que os bots aceitam).
+		Implementar Segurancao e criptografia Ex: Login page, anti sql injecton.
+
+	py_server:
+		Arrumar a funcao Send_Command(Ta feia e nao funcional demais).
+		Arrumar o socket para ele reutilizar o address.
+		Conforme eu for codando o bot eu vou atualizando o server.
+
+	bot:
+		Codar o Bot em alguma liguagem compilada para windows(c, c++, c#, vb).
+
+	all:
+		criar um documentacao.
+		criar um instalador em shellscript.
+
+//https://fonts.google.com/specimen/Wallpoet?selection.family=Wallpoet
+//extra notes
+;;instalar o modulos do python no servidor fisico
