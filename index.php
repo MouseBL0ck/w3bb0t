@@ -241,12 +241,12 @@
 					?>
 					<h4>SIMPLE DDOS ATTACK</h4>
 					<form method="post" onsubmit="<?php Scommand_json_ddos() ?>" name="cbots_ddos">
-						Target <input type="text" name="cb_ddos" placeholder="Ex: 192.168.0.10:80" required> <input type="number" name="cb_ddos_packages" required> <input type="submit" value="Attack" name="sub_ddosattack" >
+						Target <input type="text" name="cb_ddos" placeholder="Ex: 192.168.0.10:80" required> Packages <input type="number" name="cb_ddos_packages" required> <input type="submit" value="Attack" name="sub_ddosattack" >
 					</form>
 					<br>
 					<h4>ADVANCED DDOS ATTACK</h4>
 					<form method="post" onsubmit="<?php Scommand_json_Addos() ?>" name="cbots_advddos">
-						Target <input type="text" name="cb_advddos" placeholder="Ex: 192.168.0.10:80" required> Threads <input type="number" name="cb_advddos_threads" step=1 min=1 max=5 value=1> <br><br><input type="number" name="cb_advddos_packages" required><input type="submit" value="Attack" name="sub_addosattack">
+						Target <input type="text" name="cb_advddos" placeholder="Ex: 192.168.0.10:80" required> Threads <input type="number" name="cb_advddos_threads" step=1 min=2 max=10 value=2> <br><br>Packages <input type="number" name="cb_advddos_packages" required> <input type="submit" value="Attack" name="sub_addosattack">
 					</form>
 				</div>
 				<hr size=3px color="black" width=580px align=center />
