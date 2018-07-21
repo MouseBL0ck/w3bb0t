@@ -140,10 +140,16 @@ def main():
 
   Comand_Base_Connection(host_ip, host_port)
 
+#  while(get_loop):
+
+#    get_loop = Decode_BConfig_File()
   while(get_loop):
 
-    get_loop = Decode_BConfig_File()
-
+    try:
+      Decode_BConfig_File()
+    
+    except:
+      pass
   
   
 

