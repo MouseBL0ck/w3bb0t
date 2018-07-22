@@ -1,7 +1,9 @@
-# W3bb0t PHP-Python Botnet
+# W3bb0t PHP-Python Botnet.
 
-### W3bb0t Botnet is my first project.
+#### W3bb0t Botnet é meu primeiro projeto.
 
-### How this working ?
+### Como W3bb0t Botnet funciona:
 
-##### teste
+##### W3bb0t Botnet é uma botnet, escrita com a intencao de aprender. Onde há uma comunicação entre o PHP(Interface Grafica) e o Python(Servidor, Bot(compilado para windows)).
+
+##### 
