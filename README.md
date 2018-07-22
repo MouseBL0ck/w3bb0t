@@ -1,1 +1,2 @@
-# w3bb0t
+# W3bb0t PHP-Python Botnet
+##
