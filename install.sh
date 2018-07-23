@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-#Ainda falta criar funcao para instalar o modulos do python
+#Ainda falta instalar o modulos do python
 
 Package_array="apache2 libapache2-mod-php5 php5 php5-common php5-mysql php5-json mysql-server python2.7 python-pip";
 
@@ -22,11 +22,11 @@ then
 else
 	if [ $# = "0" ]
 	then
-		echo "[+] Syntax: $0 SQL_Username SQL_Password ";	
-	
+		echo "[+] Syntax: $0 SQL_Username SQL_Password ";
+
 	elif [ $# != "0" ]
 	then
-	
+
 		for package in $Package_array; do
        			dpkg -s "$package" >/dev/null 2>&1 &&{
         		        echo "[*] $package ja esta instalado.";
@@ -48,27 +48,27 @@ else
 		cp -R bot_path/ $WWW_instalation$W3BB0T_folder;
 		cp -R Documentation/ $WWW_instalation$W3BB0T_folder;
 		cp -R images/ $WWW_instalation$W3BB0T_folder;
-		
+
 		cp -R index.php $WWW_instalation$W3BB0T_folder;
 		cp -R json.php $WWW_instalation$W3BB0T_folder;
 		cp -R rg.php $WWW_instalation$W3BB0T_folder;
-	
+
 		cp -R server_/ $SERVER_path;
 
 		echo "[!] Dando as permicoes\n";
-	
+
 		chmod 770 $WWW_instalation$W3BB0T_folder/index.php;
 		chmod 770 $WWW_instalation$W3BB0T_folder/rg.php;
 		chmod 770 $WWW_instalation$W3BB0T_folder/json.php;
-	
+
 		chmod 755 $WWW_instalation$W3BB0T_folder/bot_path/*;
 		chmod 770 $WWW_instalation$W3BB0T_folder/images/*;
-		
+
 		chmod 770 -R $SERVER_path/server_/;
 
 		echo "[!] Instalado com sucesso\n";
 
 
-	fi	
+	fi
 
 fi
