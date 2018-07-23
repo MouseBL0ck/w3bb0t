@@ -40,6 +40,6 @@
     }
 
   }
-//aways i test
+
 //  Spend_command("command", 'Command_Bot.Dexec{"www.google.com/download.exe"}');
 ?>
