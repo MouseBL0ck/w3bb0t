@@ -28,10 +28,6 @@
 	<title>W3Bb0t - WEB BOTNET</title>
 
 	<style>
-	/*	* {
-			margin: 0 0 0 0;
-			padding: 0 0 0 0;
-		}*/
 		@import url('https://fonts.googleapis.com/css?family=Wallpoet');
 
 		body{
@@ -92,7 +88,6 @@
 		#sv_info{
 			width: 350px;
 			height: 580px;
-			/*margin:10px 0 0 10px;*/
 			margin:10px 0 0 0;
 			float: left;
 			background-color: #1a1a1a;
@@ -132,7 +127,6 @@
 		#main_bots{
 			width: 1200px;
 			height: 580px;
-			/*margin: 10px 0 0 284px; */
 			margin: 10px 0 0 114px;
 			float: left;
 			background-color:  #1a1a1a;
@@ -162,8 +156,8 @@
 			margin: 20px 0 0 20px;
 		}
 	</style>
-
 </head>
+
 <body>
 	<div id="main">
 		<div id="top">
