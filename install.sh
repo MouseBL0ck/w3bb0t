@@ -9,8 +9,9 @@ W3BB0T_folder="w3bb0t/";
 WWW_instalation="/var/www/html/";
 SERVER_path="/opt/w3bb0t_server/";
 
-SQL_user=$1;
-SQL_pass=$2;
+SQL_host=$1;
+SQL_user=$2;
+SQL_pass=$3;
 
 SQL_query="CREATE DATABASE w3bbot;";
 
@@ -22,9 +23,9 @@ then
 else
 	if [ $# = "0" ]
 	then
-		echo "[+] Syntax: $0 SQL_Username SQL_Password ";
+		echo "[+] Syntax: $0 SQL_Host SQL_Username SQL_Password ";
 
-	elif [ $# != "0" ]
+	elif [ $# != "0" ] && [ $# = "3"] # Testar isso.
 	then
 
 		for package in $Package_array; do
@@ -34,6 +35,9 @@ else
                 		apt-get install -y $package ;
         		}
 		done
+
+		echo "[!] Configurando Arquivos\n";
+		php5 installer.php; # Testar isso.
 
 		echo "[!] Criando Diretorios\n";
 		mkdir $WWW_instalation$W3BB0T_folder;
@@ -50,19 +54,21 @@ else
 		cp -R images/ $WWW_instalation$W3BB0T_folder;
 
 		cp -R index.php $WWW_instalation$W3BB0T_folder;
-		cp -R json.php $WWW_instalation$W3BB0T_folder;
+		cp -R mysql_config.php $WWW_instalation$W3BB0T_folder;
 		cp -R rg.php $WWW_instalation$W3BB0T_folder;
+		cp -R json.php $WWW_instalation$W3BB0T_folder;
 
 		cp -R server_/ $SERVER_path;
 
 		echo "[!] Dando as permicoes\n";
 
-		chmod 770 $WWW_instalation$W3BB0T_folder/index.php;
-		chmod 770 $WWW_instalation$W3BB0T_folder/rg.php;
-		chmod 770 $WWW_instalation$W3BB0T_folder/json.php;
+		chmod 774 $WWW_instalation$W3BB0T_folder/index.php;
+		chmod 774 $WWW_instalation$W3BB0T_folder/mysql_config.php;
+		chmod 774 $WWW_instalation$W3BB0T_folder/rg.php;
+		chmod 774 $WWW_instalation$W3BB0T_folder/json.php;
 
-		chmod 755 $WWW_instalation$W3BB0T_folder/bot_path/*;
-		chmod 770 $WWW_instalation$W3BB0T_folder/images/*;
+		chmod 755 -R $WWW_instalation$W3BB0T_folder/bot_path/;
+		chmod 775 -R $WWW_instalation$W3BB0T_folder/images/;
 
 		chmod 770 -R $SERVER_path/server_/;
 
