@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Wallpoet');
+
 #wb_login_form{
   width: 18%;
   padding-top: 2%;
   margin: 2% auto;
+}
+
+#wb_login_title{
+  width: 100%;
+  font-family: 'Wallpoet', sans-serif;
+  font-weight: lighter;
+  color: #ff2939;
 }
 
 #wb_login_input{

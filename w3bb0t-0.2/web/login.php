@@ -1,4 +1,5 @@
 <form action="" method="post" id="wb_login_form">
+  <h1 id="wb_login_title"> Login</h1>
   <div id="wb_login_input">
     <label class="wb_login_text">User </lable><input type="text" name="user_login"><br>
     <label class="wb_login_text">Password </label><input type="password" name="pass_login"><br><br>
