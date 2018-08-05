@@ -1,0 +1,22 @@
+#wb_login_form{
+  width: 18%;
+  padding-top: 2%;
+  margin: 2% auto;
+}
+
+#wb_login_input{
+  border: 1px solid #787878;
+  border-radius: 3px;
+  padding: 2% 12% 4% 17%;
+  margin-bottom: 10%;
+}
+
+#wb_login_submit{
+  margin-top: 3%;
+}
+
+.wb_login_text{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 90%;
+  color: #ff2939;
+}

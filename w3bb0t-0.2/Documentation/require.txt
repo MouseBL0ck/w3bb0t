@@ -1,0 +1,4 @@
+https://stackoverflow.com/questions/3024546/change-one-cells-data-in-mysql
+https://www.tutorialspoint.com/python/python_database_access.htm
+http://zetcode.com/db/mysqlpython/
+https://docs.python.org/2/library/socket.html

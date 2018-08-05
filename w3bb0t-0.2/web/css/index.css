@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Wallpoet');
+
+body{
+  width: 99%;
+  height: auto;
+  background-color: #141414;
+  //background-image: url('../refer_images/nada.jpg');
+  //background-repeat: no-repeat;
+  //background-size: auto;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+#wb_banner{
+  width: 15%;
+  margin: 0 auto;
+}
+
+#link_banner{
+  font-size: 34px;
+  font-family: 'Wallpoet', sans-serif;
+  /*-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #000000;*/
+  color: #ff2939;
+}
+
+
+#wb_menu{
+  width: 100%;
+  background-color: #ff2939;
+  float: left;
+  margin-top: 0.4%;
+}
+
+#wb_menu_itens{
+  width: 50%;
+  margin: 0 41.5%;
+}
+
+#wb_page{
+  width: 80%;
+  height: auto;
+  background-color: #1c1c1c;
+  margin: 3.5% auto;
+  padding-bottom: 1%;
+}
+
+.wb_menu_buttons{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 100%;
+  color: #1c1c1c;
+  padding-left: 15px;
+  float: left;
+}
