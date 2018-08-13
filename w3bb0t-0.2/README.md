@@ -1,4 +1,4 @@
-# W3bb0t PHP-Python Botnet.
+# W3bb0t PHP-Python Botnet(Desenvolvimento Parado) Necessario desenvolver o bot e o instalador do bot em C#.
 
 #### W3bb0t Botnet é meu primeiro projeto.
 
