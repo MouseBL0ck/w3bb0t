@@ -3,7 +3,7 @@
 
   //Fucntion for to save json:
   function Spend_saveFile($config_json){
-    $config_file = fopen("server_/bot_ccommands", "w");
+    $config_file = fopen("/opt/server_/bot_ccommands", "w");
 
     fwrite($config_file, $config_json);
     fclose($config_file);

