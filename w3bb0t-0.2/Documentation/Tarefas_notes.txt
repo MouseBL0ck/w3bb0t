@@ -1,8 +1,7 @@
 O que ainda falta:
 	web:
-		Fazer isso depois do //command no server arrumar e no bot tambem		//check box nos itens(bots) para ter um ataque mais personalizado Ex: Quero que somente dos bots iram atacar./complicado demais pra fazer agr tera' que refazer todo o esquema de send
-		usar so um botao de ataque.// complicado agr
-		melhorar o design(css).
+		Urgente Verificar se o register ja existe
+		Urgente Testar para ver se o Token_method Funciona!
 
 		Criar page de info/credits(onde na info vai estar explicando tudo e tambem os comandos que os bots aceitam).
 		Implementar Segurancao e criptografia Ex: Login page, anti sql injecton.
